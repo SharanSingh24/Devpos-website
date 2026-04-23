@@ -28,9 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ----- vending simulation -----
   const brands = [
-    {id:'on', name:'Optimum Nutrition'},
-    {id:'mp', name:'MyProtein'},
-    {id:'ms', name:'MuscleTech'}
+    {id:'on', name:'Optimum Nutrition', price: 2.00},
+    {id:'mp', name:'MyProtein', price: 1.50},
+    {id:'ms', name:'MuscleTech', price: 2.00}
   ]
 
   const products = [
@@ -64,6 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
         selectedBrand = b.id
         document.querySelectorAll('.brand-card').forEach(n=>n.classList.remove('selected'))
         el.classList.add('selected')
+        // update product prices when brand changes
+        renderProducts()
       })
       brandCards.appendChild(el)
     })
@@ -71,10 +73,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderProducts(){
     productOptions.innerHTML = ''
+    // determine brand-specific price (fallback to product.price)
+    const brand = brands.find(b => b.id === selectedBrand)
     products.forEach(p => {
       const btn = document.createElement('button')
       btn.className = 'product-btn'
-      btn.textContent = `${p.name} — $${p.price.toFixed(2)}`
+      const displayPrice = (brand && typeof brand.price === 'number') ? brand.price : p.price
+      btn.textContent = `${p.name} — $${displayPrice.toFixed(2)}`
       btn.dataset.id = p.id
       btn.addEventListener('click', ()=>{
         selectedProduct = p.id
@@ -106,7 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const brand = brands.find(b=>b.id===selectedBrand)
     const product = products.find(p=>p.id===selectedProduct)
     if(!brand || !product) return
-    simCart.push({brand:brand.name, product:product.name, price:product.price, qty:1})
+    // use brand-specific price when available
+    const price = (typeof brand.price === 'number') ? brand.price : product.price
+    simCart.push({brand:brand.name, product:product.name, price:price, qty:1})
     // small button feedback
     addSimBtn.animate([{transform:'scale(1)'},{transform:'scale(.98)'},{transform:'scale(1)'}],{duration:200})
     updateSimCart()
