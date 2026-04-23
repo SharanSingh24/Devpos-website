@@ -30,13 +30,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const brands = [
     {id:'on', name:'Optimum Nutrition', price: 2.00},
     {id:'mp', name:'MyProtein', price: 1.50},
-    {id:'ms', name:'MuscleTech', price: 2.00}
+    {id:'ms', name:'MuscleTech', price: 2.00},
+    {id:'wc', name:'Wellcore', price: 1.00}
   ]
 
   const products = [
     {id:'whey', name:'Whey Protein', price:29.99},
     {id:'isolate', name:'Isolate', price:34.99},
     {id:'gainer', name:'Mass Gainer', price:39.99}
+    ,{id:'creatine', name:'Creatine', price:9.99},
+    {id:'muscle', name:'Muscle', price:9.99}
   ]
 
   const startBtn = document.getElementById('startMachineBtn')
