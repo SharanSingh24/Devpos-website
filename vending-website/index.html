@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Protein Vend — Smart Protein. Anytime. Anywhere.</title>
+  <title>Protein Vend — Smart Protein. Anytime. everywhere.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -159,6 +159,15 @@
       <div class="contact">partners@proteinvend.com</div>
     </div>
   </footer>
+
+  <!-- Dispense modal (hidden by default) -->
+  <div id="dispenseModal" class="hidden modal" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <button id="closeDispense" class="btn btn-ghost">Close</button>
+      <img id="dispenseImage" src="" alt="Dispensed item" />
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

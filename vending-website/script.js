@@ -51,6 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const simCartList = document.getElementById('simCartList')
   const simTotal = document.getElementById('simTotal')
 
+  // modal elements for showing dispense image
+  const dispenseModal = document.getElementById('dispenseModal')
+  const dispenseImage = document.getElementById('dispenseImage')
+  const closeDispense = document.getElementById('closeDispense')
+
   let selectedBrand = brands[0].id
   let selectedProduct = products[0].id
   let simCart = []
@@ -135,10 +140,35 @@ document.addEventListener('DOMContentLoaded', () => {
       dispenseBtn.textContent = 'Dispense'
       dispenseBtn.disabled = false
       const total = simCart.reduce((s,i)=>s + i.price*i.qty,0)
-      alert(`Simulated dispense — Total $${total.toFixed(2)}. Enjoy!`)
+      // show the dispense image modal (user can place the real image at images/dispense.png)
+      if(dispenseImage){
+        // try PNG first; if it fails, fall back to SVG placeholder
+        dispenseImage.onerror = () => {
+          if(dispenseImage.src && dispenseImage.src.indexOf('dispense.svg') === -1){
+            dispenseImage.src = 'images/dispense.svg'
+          }
+        }
+        dispenseImage.src = 'images/dispense.png'
+      }
+      if(dispenseModal){
+        dispenseModal.classList.remove('hidden')
+        dispenseModal.setAttribute('aria-hidden','false')
+      } else {
+        alert(`Simulated dispense — Total $${total.toFixed(2)}. Enjoy!`)
+      }
       simCart = []
       updateSimCart()
     }, 1400)
+  })
+
+  // close modal handler
+  if(closeDispense) closeDispense.addEventListener('click', ()=>{
+    if(dispenseModal){
+      dispenseModal.classList.add('hidden')
+      dispenseModal.setAttribute('aria-hidden','true')
+      // clear src to avoid keeping memory if large
+      if(dispenseImage) dispenseImage.src = ''
+    }
   })
 
   startBtn && startBtn.addEventListener('click', ()=>{

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#2eff7b" />
+      <stop offset="1" stop-color="#43d1ff" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="#0b0f14" rx="24"/>
+  <rect x="60" y="60" width="680" height="520" rx="18" fill="#0b1620" opacity="0.9" stroke="rgba(255,255,255,0.03)"/>
+  <g transform="translate(120,120)">
+    <rect width="480" height="480" rx="12" fill="#fff"/>
+    <rect x="28" y="28" width="424" height="424" rx="8" fill="#111"/>
+    <g transform="translate(56,56)" fill="#fff">
+      <!-- simple QR-like blocks -->
+      <rect x="0" y="0" width="40" height="40" />
+      <rect x="64" y="0" width="32" height="32" />
+      <rect x="112" y="0" width="24" height="24" />
+      <rect x="0" y="64" width="24" height="24" />
+      <rect x="48" y="64" width="40" height="40" />
+      <rect x="96" y="64" width="16" height="16" />
+      <rect x="160" y="160" width="24" height="24" />
+      <rect x="216" y="96" width="32" height="32" />
+      <rect x="320" y="200" width="48" height="48" />
+    </g>
+  </g>
+  <g transform="translate(0,660)" fill="url(#g)">
+    <text x="50%" y="50%" font-family="Poppins, Arial, sans-serif" font-weight="600" font-size="36" text-anchor="middle" dominant-baseline="central">Dispensed — Enjoy!</text>
+  </g>
+</svg>
